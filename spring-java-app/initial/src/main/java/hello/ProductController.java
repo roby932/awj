@@ -53,8 +53,8 @@ public class ProductController {
   }
 
   @RequestMapping(value="/anime", method = RequestMethod.POST)
-  public ResponseEntity create(@RequestParam(value='name') String name, @RequestParam(value="stock") int stock) {
-    Product newProduct = new Product(this.products.size() + 1, name, stock);
+  public ResponseEntity create(@RequestParam(value="name") String name, @RequestParam(value="stock") int stock) {
+    Product newProduct = new Product(this.products.size() + 1, String.format(name), stock);
     products.add(newProduct);
     return new ResponseEntity<Product>(newProduct, new HttpHeaders(), HttpStatus.OK);
   }

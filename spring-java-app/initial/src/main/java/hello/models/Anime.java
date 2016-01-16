@@ -1,12 +1,12 @@
 package hello;
 
-public class User {
+public class Anime {
 
     private final long id;
     private String name;
     private int numberOfEp;
 
-    public User(long id, String name, int numberOfEp) {
+    public Anime(long id, String name, int numberOfEp) {
         this.id = id;
         this.name = name;
         this.numberOfEp = numberOfEp;

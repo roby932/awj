@@ -53,8 +53,8 @@ public class AnimeController {
   }
 
   @RequestMapping(value="/anime", method = RequestMethod.POST)
-  public ResponseEntity create(@RequestParam(value='name') String name, @RequestParam(value="numberOfEp") int numberOfEp) {
-    Anime newAnime = new Anime(this.animes.size() + 1, name, numberOfEp);
+  public ResponseEntity create(@RequestParam(value="name") String name, @RequestParam(value="numberOfEp") int numberOfEp) {
+    Anime newAnime = new Anime(this.animes.size() + 1, String.format(name), numberOfEp);
     animes.add(newAnime);
     return new ResponseEntity<Anime>(newAnime, new HttpHeaders(), HttpStatus.OK);
   }

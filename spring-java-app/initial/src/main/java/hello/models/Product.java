@@ -1,12 +1,12 @@
 package hello;
 
-public class User {
+public class Product {
 
     private final long id;
     private String name;
     private int stock;
 
-    public User(long id, String name, int stock) {
+    public Product(long id, String name, int stock) {
         this.id = id;
         this.name = name;
         this.stock = stock;

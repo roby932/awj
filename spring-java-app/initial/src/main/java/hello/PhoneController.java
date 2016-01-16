@@ -17,9 +17,9 @@ public class PhoneController {
   private List<Phone> phones = new ArrayList<Phone>();
 
   PhoneController() {
-    Phone p1 = new Phone(1, "laptop", 26);
-    Phone p2 = new Phone(2, "playstation", 257);
-    Phone p3 = new Phone(3, "headphones", 36);
+    Phone p1 = new Phone(1, "laptop", "26");
+    Phone p2 = new Phone(2, "playstation", "257");
+    Phone p3 = new Phone(3, "headphones", "36");
 
     phones.add(p1);
     phones.add(p2);
@@ -53,8 +53,8 @@ public class PhoneController {
   }
 
   @RequestMapping(value="/anime", method = RequestMethod.POST)
-  public ResponseEntity create(@RequestParam(value='name') String name, @RequestParam(value="info") String info) {
-    Phone newPhone = new Phone(this.phones.size() + 1, name, info);
+  public ResponseEntity create(@RequestParam(value="name") String name, @RequestParam(value="info") String info) {
+    Phone newPhone = new Phone(this.phones.size() + 1, String.format(name), String.format(info));
     phones.add(newPhone);
     return new ResponseEntity<Phone>(newPhone, new HttpHeaders(), HttpStatus.OK);
   }

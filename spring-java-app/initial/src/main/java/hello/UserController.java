@@ -17,9 +17,9 @@ public class UserController {
   private List<User> users = new ArrayList<User>();
 
   UserController() {
-    User p1 = new User(1, "laptop", 26);
-    User p2 = new User(2, "playstation", 257);
-    User p3 = new User(3, "headusers", 36);
+    User p1 = new User(1, "laptop", "26");
+    User p2 = new User(2, "playstation", "257");
+    User p3 = new User(3, "headusers", "36");
 
     users.add(p1);
     users.add(p2);
@@ -53,8 +53,8 @@ public class UserController {
   }
 
   @RequestMapping(value="/anime", method = RequestMethod.POST)
-  public ResponseEntity create(@RequestParam(value='last_name') String last_name, @RequestParam(value="first_name") String first_name) {
-    User newUser = new User(this.users.size() + 1, last_name, first_name);
+  public ResponseEntity create(@RequestParam(value="last_name") String last_name, @RequestParam(value="first_name") String first_name) {
+    User newUser = new User(this.users.size() + 1, String.format(last_name), String.format(first_name));
     users.add(newUser);
     return new ResponseEntity<User>(newUser, new HttpHeaders(), HttpStatus.OK);
   }
