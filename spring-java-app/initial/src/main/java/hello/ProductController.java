@@ -26,12 +26,12 @@ public class ProductController {
     products.add(p3);
   }
 
-  @RequestMapping(value="/anime", method = RequestMethod.GET)
+  @RequestMapping(value="/product", method = RequestMethod.GET)
   public List<Product> index() {
     return this.products;
   }
 
-  @RequestMapping(value="/anime/{id}", method = RequestMethod.GET)
+  @RequestMapping(value="/product/{id}", method = RequestMethod.GET)
   public ResponseEntity show(@PathVariable("id") int id) {
     for(Product p : this.products) {
       if(p.getId() == id) {
@@ -41,7 +41,7 @@ public class ProductController {
     return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
   }
 
-  @RequestMapping(value="/anime/{id}", method = RequestMethod.DELETE)
+  @RequestMapping(value="/product/{id}", method = RequestMethod.DELETE)
   public ResponseEntity remove(@PathVariable("id") int id) {
     for(Product p : this.products) {
       if(p.getId() == id) {
@@ -52,14 +52,14 @@ public class ProductController {
     return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
   }
 
-  @RequestMapping(value="/anime", method = RequestMethod.POST)
+  @RequestMapping(value="/product", method = RequestMethod.POST)
   public ResponseEntity create(@RequestParam(value="name") String name, @RequestParam(value="stock") int stock) {
     Product newProduct = new Product(this.products.size() + 1, String.format(name), stock);
     products.add(newProduct);
     return new ResponseEntity<Product>(newProduct, new HttpHeaders(), HttpStatus.OK);
   }
 
-  @RequestMapping(value="/anime/{id}", method = RequestMethod.PUT)
+  @RequestMapping(value="/product/{id}", method = RequestMethod.PUT)
   public ResponseEntity update(@PathVariable("id") int id , @RequestParam(value="name") String name, @RequestParam(value="stock") int stock) {
     for(Product p : this.products) {
       if(p.getId() == id) {

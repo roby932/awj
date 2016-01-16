@@ -26,12 +26,12 @@ public class PhoneController {
     phones.add(p3);
   }
 
-  @RequestMapping(value="/anime", method = RequestMethod.GET)
+  @RequestMapping(value="/phone", method = RequestMethod.GET)
   public List<Phone> index() {
     return this.phones;
   }
 
-  @RequestMapping(value="/anime/{id}", method = RequestMethod.GET)
+  @RequestMapping(value="/phone/{id}", method = RequestMethod.GET)
   public ResponseEntity show(@PathVariable("id") int id) {
     for(Phone p : this.phones) {
       if(p.getId() == id) {
@@ -41,7 +41,7 @@ public class PhoneController {
     return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
   }
 
-  @RequestMapping(value="/anime/{id}", method = RequestMethod.DELETE)
+  @RequestMapping(value="/phone/{id}", method = RequestMethod.DELETE)
   public ResponseEntity remove(@PathVariable("id") int id) {
     for(Phone p : this.phones) {
       if(p.getId() == id) {
@@ -52,14 +52,14 @@ public class PhoneController {
     return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
   }
 
-  @RequestMapping(value="/anime", method = RequestMethod.POST)
+  @RequestMapping(value="/phone", method = RequestMethod.POST)
   public ResponseEntity create(@RequestParam(value="name") String name, @RequestParam(value="info") String info) {
     Phone newPhone = new Phone(this.phones.size() + 1, String.format(name), String.format(info));
     phones.add(newPhone);
     return new ResponseEntity<Phone>(newPhone, new HttpHeaders(), HttpStatus.OK);
   }
 
-  @RequestMapping(value="/anime/{id}", method = RequestMethod.PUT)
+  @RequestMapping(value="/phone/{id}", method = RequestMethod.PUT)
   public ResponseEntity update(@PathVariable("id") int id , @RequestParam(value="name") String name, @RequestParam(value="info") String info) {
     for(Phone p : this.phones) {
       if(p.getId() == id) {

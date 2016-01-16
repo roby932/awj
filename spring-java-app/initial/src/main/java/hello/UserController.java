@@ -26,12 +26,12 @@ public class UserController {
     users.add(p3);
   }
 
-  @RequestMapping(value="/anime", method = RequestMethod.GET)
+  @RequestMapping(value="/user", method = RequestMethod.GET)
   public List<User> index() {
     return this.users;
   }
 
-  @RequestMapping(value="/anime/{id}", method = RequestMethod.GET)
+  @RequestMapping(value="/user/{id}", method = RequestMethod.GET)
   public ResponseEntity show(@PathVariable("id") int id) {
     for(User p : this.users) {
       if(p.getId() == id) {
@@ -41,7 +41,7 @@ public class UserController {
     return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
   }
 
-  @RequestMapping(value="/anime/{id}", method = RequestMethod.DELETE)
+  @RequestMapping(value="/user/{id}", method = RequestMethod.DELETE)
   public ResponseEntity remove(@PathVariable("id") int id) {
     for(User p : this.users) {
       if(p.getId() == id) {
@@ -52,19 +52,19 @@ public class UserController {
     return new ResponseEntity<String>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
   }
 
-  @RequestMapping(value="/anime", method = RequestMethod.POST)
-  public ResponseEntity create(@RequestParam(value="last_name") String last_name, @RequestParam(value="first_name") String first_name) {
-    User newUser = new User(this.users.size() + 1, String.format(last_name), String.format(first_name));
+  @RequestMapping(value="/user", method = RequestMethod.POST)
+  public ResponseEntity create(@RequestParam(value="hobby") String hobby, @RequestParam(value="name") String name) {
+    User newUser = new User(this.users.size() + 1, String.format(hobby), String.format(name));
     users.add(newUser);
     return new ResponseEntity<User>(newUser, new HttpHeaders(), HttpStatus.OK);
   }
 
-  @RequestMapping(value="/anime/{id}", method = RequestMethod.PUT)
-  public ResponseEntity update(@PathVariable("id") int id , @RequestParam(value="last_name") String last_name, @RequestParam(value="first_name") String first_name) {
+  @RequestMapping(value="/user/{id}", method = RequestMethod.PUT)
+  public ResponseEntity update(@PathVariable("id") int id , @RequestParam(value="hobby") String hobby, @RequestParam(value="name") String name) {
     for(User p : this.users) {
       if(p.getId() == id) {
-        p.setlast_name(last_name);
-        p.setfirst_name(first_name);
+        p.sethobby(hobby);
+        p.setname(name);
         return new ResponseEntity<User>(p, new HttpHeaders(), HttpStatus.OK);
       }
     }

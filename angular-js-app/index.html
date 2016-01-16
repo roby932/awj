@@ -41,8 +41,7 @@
         <th style="width:210px;">Options</th>
       </tr>
       <tr ng-repeat="item in persoane.data" data-id="{{ item.id }}">
-        <td>{{ item.id }}</td>
-        <td>{{ item.name }}</td>
+        <td ng-repeat="key in keys">{{ item[key] }}</td>
         <td>
           <a href="">
             <span class="label label-success">
@@ -65,13 +64,9 @@
 
     <h2>Add new {{field}}</h2>
     <table>
-      <tr>
-        <td>ID</td>
-        <td><input type="text" class="form-control" ng-model="person.id"/></td>
-      </tr>
-      <tr>
-        <td>Name</td>
-        <td><input type="text" class="form-control" ng-model="person.name"/></td>
+      <tr ng-repeat="key in keys" data-id="{{ item.id }}" ng-hide="{{key == 'id'}}">
+        <td>{{key}}</td>
+        <td><input type="text" class="form-control" ng-model="person[key]"/></td>
       </tr>
       <tr>
         <td colspan="2">
@@ -86,10 +81,6 @@
       <tr>
         <td>ID</td>
         <td><input type="text" ng-model="editPerson.id"></td>
-      </tr>
-      <tr>
-        <td>Name</td>
-        <td><input type="text" ng-model="editPerson.name"></td>
       </tr>
       <tr>
         <td colspan="2">

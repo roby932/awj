@@ -3,32 +3,32 @@ package hello;
 public class User {
 
     private final long id;
-    private String firstName;
-    private String lastName;
+    private String name;
+    private String hobby;
 
-    public User(long id, String firstName, String lastName) {
+    public User(long id, String name, String hobby) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
+        this.hobby = hobby;
     }
 
     public long getId() {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getname() {
+        return name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String gethobby() {
+        return hobby;
     }
 
-    public void setFirstName(String param) {
-        this.firstName = param;
+    public void setname(String param) {
+        this.name = param;
     }
 
-    public void setLastName(String param) {
-        this.lastName = param;
+    public void sethobby(String param) {
+        this.hobby = param;
     }
 }
